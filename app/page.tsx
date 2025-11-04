@@ -1,11 +1,9 @@
-import ProductCard from "@/components/ProductPage";
-import { products } from "@/data/products";
-
+ import NavBar from "@/components/NavBar";
 
 export default function Home() {
   return (
    <>
-
+      <NavBar />
    
    </>
   );

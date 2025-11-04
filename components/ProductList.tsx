@@ -10,18 +10,20 @@ function ProductList() {
         </div>
 
         {/* all products */}
-        <div className="w-full bg-red-200 h-screen">
-          {/* map through products */}
-          {products.map((product) => (
-            <ProductCard
-              key={product.id}
-              image={product.image}
-              title={product.title}
-              description={product.description}
-              price={product.price}
-              slug={product.slug}
-            />
-          ))}
+        <div className=" bg-red-200 grid grid-cols-2">
+          <div className="w-100">
+            {/* map through products */}
+            {products.map((product) => (
+              <ProductCard
+                key={product.id}
+                image={product.image}
+                title={product.title}
+                description={product.description}
+                price={product.price}
+                slug={product.slug}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </>
