@@ -2,7 +2,7 @@ import { StaticImageData } from "next/image";
 import lovenote from "../public/lovenote.png"
 
 interface ProductProps {
-    id: number;
+    id: string;
     title: string;
     description: string;
     price: string;
@@ -12,7 +12,7 @@ interface ProductProps {
 
 export const products: ProductProps[] = [
     {
-        id: 1,
+        id: "1",
         title: "Flower Mug",
         description: "Morning mug to start your day",
         price: "£40",
@@ -20,7 +20,7 @@ export const products: ProductProps[] = [
         slug: "flower-mug"
     },
     {
-        id: 2,
+        id: "2",
         title: "Bow Mug",
         description: "Morning mug to start your day",
         price: "£40",
@@ -28,7 +28,7 @@ export const products: ProductProps[] = [
         slug: "bow-mug"
     },
     {
-        id: 3,
+        id: "3",
         title: "Summer Mug",
         description: "Morning mug to start your day",
         price: "£40",
@@ -36,7 +36,7 @@ export const products: ProductProps[] = [
         slug: "summer-mug"
     },
     {
-        id: 4,
+        id: "4",
         title: "Autumn Mug",
         description: "Morning mug to start your day",
         price: "£40",
@@ -44,7 +44,7 @@ export const products: ProductProps[] = [
         slug: "autumn-mug"
     },
     {
-        id: 5,
+        id: "5",
         title: "Tulip Mug",
         description: "Morning mug to start your day",
         price: "£40",
