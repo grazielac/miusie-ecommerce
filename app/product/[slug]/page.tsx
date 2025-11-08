@@ -15,7 +15,7 @@ function ProductPage() {
 
   console.log("postSlug:", slug);
   console.log(slug);
-  console.log("pproducts:", products);
+  console.log("products:", products);
 
   if (!product) return <p>Product not found</p>;
 
