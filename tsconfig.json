@@ -28,7 +28,15 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
-  ],
+    "**/*.mts",
+    "data/products.js",
+    "hooks/use-mobile.js",
+    "lib/utils.js",
+    "global.d.js",
+    "next.config.js",
+    "app/layout.jsx",
+    "app/page.jsx",
+    "app/product/[slug]/page.jsx"
+, "app/api/checkout/route.js", "context/CartProvider.jsx", "components/AddToCart.jsx", "components/NavBar.jsx", "components/ProductCard.jsx", "components/ProductList.jsx"  ],
   "exclude": ["node_modules"]
 }

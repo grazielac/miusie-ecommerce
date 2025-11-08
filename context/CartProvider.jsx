@@ -1,23 +1,7 @@
 "use client";
-import { StaticImageData } from "next/image";
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
-type Product = {
-  id: string;
-  title: string;
-  price: string;
-  image: StaticImageData;
-  slug: string;
-};
-
-type CartItem = Product & { quantity: number };
-
-type CartContextType = {
-  cart: CartItem[];
-  addToCart: (product: Product) => void;
-};
-
-const CartContext = createContext<CartContextType | undefined>(undefined);
+const CartContext = createContext(undefined);
 
 export function useCart() {
   const context = useContext(CartContext);
@@ -25,12 +9,12 @@ export function useCart() {
   return context;
 }
 
-function CartProvider({ children }: { children: ReactNode }) {
+function CartProvider() {
   // store the cart
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState([]);
 
   // function that takes an item and adds it to the cart
-  function addToCart(product: Product) {
+  function addToCart() {
     setCart((prevCart) => {
       const existingItem = prevCart.find((item) => item.id === product.id);
       if (existingItem) {
