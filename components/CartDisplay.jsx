@@ -4,6 +4,12 @@ import Image from "next/image";
 
 function CartDisplay() {
   const { cart } = useCart();
+  
+
+  //calculate subtotal
+  const subtotal = cart.reduce(
+    (acc, item) => acc + Number(item.price) * item.quantity, 0
+  );
 
   return (
     <div>
@@ -33,7 +39,9 @@ function CartDisplay() {
                           {item.title} x {item.quantity}
                         </div>
                         <div>
-                          <span>£{item.price * item.quantity}</span>
+                          <span>
+                            £{item.price * item.quantity}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -43,9 +51,9 @@ function CartDisplay() {
             </ul>
           )}
         </div>
-        <div>
-          <p>Subtotal</p>
-        </div>
+
+        <div className="mt-4 font-bold text-lg">Subtotal: £{subtotal}</div>
+
         <div className="flex items-center justify-center">
           <button className="bg-red-300 rounded-full px-4 py-2">
             Checkout
