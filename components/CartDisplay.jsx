@@ -17,22 +17,39 @@ function CartDisplay() {
             <ul>
               {cart.map((item) => (
                 <li key={item.id} className="mb-2">
-                  <span className="flex">
+                  <div className="bg-gray-200 flex gap-8 pl-8">
                     <div>
                       <Image
                         src={item.image}
                         alt={item.title}
-                        width={80}
-                        height={80}
-                        className="rounded-md" />
-                      {item.title} x {item.quantity}
+                        width={200}
+                        height={200}
+                        className="rounded-md"
+                      />
                     </div>
-                  </span>
-                  <span>£{item.price * item.quantity}</span>
+                    <div>
+                      <div className="bg-amber-200 mt-8">
+                        <div className="font-bold">
+                          {item.title} x {item.quantity}
+                        </div>
+                        <div>
+                          <span>£{item.price * item.quantity}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </li>
               ))}
             </ul>
           )}
+        </div>
+        <div>
+          <p>Subtotal</p>
+        </div>
+        <div className="flex items-center justify-center">
+          <button className="bg-red-300 rounded-full px-4 py-2">
+            Checkout
+          </button>
         </div>
       </div>
     </div>
