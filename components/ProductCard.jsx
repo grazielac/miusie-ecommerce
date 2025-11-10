@@ -1,25 +1,19 @@
 import Link from 'next/link'
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
+import { products } from '@/data/products'
 
-interface ProductCardProps {
-    title: string;
-    image: StaticImageData;
-    price: string;
-    description: string;
-    slug: string;
-}
 
-function ProductCard({ title, image, price, description, slug }: ProductCardProps) {
+function ProductCard({ product }) {
   return (
     <div>
-      <Link href={`/product/${slug}`}>
-        <Image src={image} alt={title} />
-        <h2>{title}</h2>
-        <p>{description}</p>
-        <p>{price}</p>
+      <Link href={`/product/${product.slug}`}>
+        <Image src={product.image} alt={product.title} />
+        <h2>{product.title}</h2>
+        <p>{product.description}</p>
+        <p>{product.price}</p>
       </Link>
     </div>
   )
 }
 
-export default ProductCard
+export default ProductCard;
