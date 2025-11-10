@@ -1,0 +1,12 @@
+"use client"
+import ProductList from '@/components/ProductList'
+
+function page() {
+  return (
+    <div>
+      <ProductList />
+    </div>
+  )
+}
+
+export default page
