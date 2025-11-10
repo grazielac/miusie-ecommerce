@@ -1,16 +1,6 @@
-import { StaticImageData } from "next/image";
 import lovenote from "../public/lovenote.png"
 
-interface ProductProps {
-    id: string;
-    title: string;
-    description: string;
-    price: string;
-    image: StaticImageData;
-    slug: string;
-}
-
-export const products: ProductProps[] = [
+export const products = [
     {
         id: "1",
         title: "Flower Mug",
