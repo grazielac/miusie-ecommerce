@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState } from "react";
 
 const CartContext = createContext(undefined);
 
@@ -9,14 +9,15 @@ export function useCart() {
   return context;
 }
 
-function CartProvider() {
+function CartProvider({ children }) {
   // store the cart
   const [cart, setCart] = useState([]);
 
   // function that takes an item and adds it to the cart
-  function addToCart() {
+  function addToCart(product) {
     setCart((prevCart) => {
       const existingItem = prevCart.find((item) => item.id === product.id);
+
       if (existingItem) {
         return prevCart.map((item) =>
           item.id === product.id
@@ -30,7 +31,7 @@ function CartProvider() {
   }
 
   return (
-    <CartContext.Provider value={{ cart, addToCart }}>
+    <CartContext.Provider value={{ cart, addToCart}}>
       {children}
     </CartContext.Provider>
   );
