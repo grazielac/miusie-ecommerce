@@ -1,21 +1,21 @@
 "use client";
 import { useCart } from "../context/CartProvider";
 import Image from "next/image";
+import CheckoutButton from "./CheckoutButton";
 
 function CartDisplay() {
   const { cart } = useCart();
-  
 
   //calculate subtotal
   const subtotal = cart.reduce(
-    (acc, item) => acc + Number(item.price) * item.quantity, 0
+    (acc, item) => acc + Number(item.price) * item.quantity,
+    0
   );
 
   return (
     <div>
       <div className="pb-2 pt-8">
         <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
-
         <div className="">
           {cart.length === 0 ? (
             <p className="text-gray-500">Your cart is empty.</p>
@@ -39,9 +39,7 @@ function CartDisplay() {
                           {item.title} x {item.quantity}
                         </div>
                         <div>
-                          <span>
-                            £{item.price * item.quantity}
-                          </span>
+                          <span>£{item.price * item.quantity}</span>
                         </div>
                       </div>
                     </div>
@@ -55,9 +53,10 @@ function CartDisplay() {
         <div className="mt-4 font-bold text-lg">Subtotal: £{subtotal}</div>
 
         <div className="flex items-center justify-center">
-          <button className="bg-red-300 rounded-full px-4 py-2">
-            Checkout
-          </button>
+          <CheckoutButton
+            items={items}
+            className="bg-red-300 rounded-full px-4 py-2"
+          ></CheckoutButton>
         </div>
       </div>
     </div>
