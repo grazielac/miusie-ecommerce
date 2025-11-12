@@ -6,7 +6,7 @@ export const products = [
         title: "Flower Mug",
         description: "Morning mug to start your day",
         price: 40,
-        image: lovenote,
+        image: "/lovenote.png",
         slug: "flower-mug"
     },
     {
@@ -14,7 +14,7 @@ export const products = [
         title: "Bow Mug",
         description: "Morning mug to start your day",
         price: 40,
-        image: lovenote,
+        image: "/lovenote.png",
         slug: "bow-mug"
     },
     {
@@ -22,7 +22,7 @@ export const products = [
         title: "Summer Mug",
         description: "Morning mug to start your day",
         price: 40,
-        image: lovenote,
+        image: "/lovenote.png",
         slug: "summer-mug"
     },
     {
@@ -30,7 +30,7 @@ export const products = [
         title: "Autumn Mug",
         description: "Morning mug to start your day",
         price: 40,
-        image: lovenote,
+        image: "/lovenote.png",
         slug: "autumn-mug"
     },
     {
@@ -38,7 +38,7 @@ export const products = [
         title: "Tulip Mug",
         description: "Morning mug to start your day",
         price: 40,
-        image: lovenote,
+        image: "/lovenote.png",
         slug: "tulip-mug"
     },
 ];
