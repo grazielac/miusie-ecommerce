@@ -3,9 +3,9 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-function Success() {
-  const searchParams = useSearchParams();
-  const sessionId = searchParams.get("session_id");
+function SuccessPage() {
+  const params = useSearchParams();
+  const sessionId = params.get("session_id");
   const [order, setOrder] = useState(null);
 
   useEffect(() => {
@@ -36,4 +36,4 @@ function Success() {
   );
 }
 
-export default Success;
+export default SuccessPage;
