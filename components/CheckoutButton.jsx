@@ -1,27 +1,44 @@
-"use client"
+"use client";
 
 export default function CheckoutButton({ items }) {
-    const handleCheckout = async () => {
-        try {
-            const response = await fetch("/api/checkput_sessions", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ items }),
-            });
+  const handleCheckout = async () => {
+    try {
+      const response = await fetch("/api/checkout_sessions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items }),
+      });
 
-        const { url } = await response.json();
+      const text = await response.text();
+      console.log("API Response:", text);
 
-        if (url) {
-            window.location.href = url; // redirect to stripe checkout
-        }
-        } catch (error) {
-            console.error("Checkout error:", error);
-        }
-    };
+      let data;
+      try { 
+        data = JSON.parse(text);
+      } catch {
+        console.error("Server did not return JSON");
+        return;
+      }
 
-    return (
-        <button onClick={handleCheckout}>
-            Checkout
-        </button>
-    );
+      if (data.url) {
+        window.location.href = data.url; // redirect to stripe checkout
+      } else {
+        console.error("No URL in response:", data);
+      }
+    } catch (error) {
+      console.error("Checkout error:", error);
+      
+    }
+  };
+
+  return (
+    <div>
+      <button
+        className="border py-2 px-4 rounded-full bg-red-400 cursor-pointer hover:bg-amber-200"
+        onClick={handleCheckout}
+      >
+        Checkout
+      </button>
+    </div>
+  );
 }

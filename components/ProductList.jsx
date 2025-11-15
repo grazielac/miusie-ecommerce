@@ -1,6 +1,7 @@
-"use client";
 import { products } from "@/data/products";
 import ProductCard from "./ProductCard";
+
+// rendering statis data (products.map) and ProductCard
 
 function ProductList() {
   return (
@@ -9,13 +10,11 @@ function ProductList() {
         {/* all products */}
         <div className=" bg-red-200 w-full p-6">
           <h2 className="text-xl">MUGS</h2>
-
           <div className="grid grid-cols-4 gap-6">
             {/* map through products */}
             {products.map((product) => (
               <div key={product.id} className="mb-8">
                 <ProductCard product={product} />
-                
               </div>
             ))}
           </div>
