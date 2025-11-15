@@ -24,7 +24,7 @@ function SuccessContent() {
                 <div className="text-6xl mb-4">✅</div>
                 <h1>Payment Successful!</h1>
                 <p>Thank you for your purchase. Your order has been confirmed.</p>
-                {sessionId && (
+                {order?.id && (
                   <p className="text-sm text-gray-500 mb-6">Order ID: {order.id}</p>
                 )}
                 <Link
