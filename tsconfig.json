@@ -37,6 +37,6 @@
     "app/layout.jsx",
     "app/page.jsx",
     "app/product/[slug]/page.jsx"
-, "app/api/checkout/route.js", "context/CartProvider.jsx", "components/AddToCart.jsx", "components/NavBar.jsx", "components/ProductCard.jsx", "components/ProductList.jsx"  ],
+, "app/api/checkout_sessions/route.js", "context/CartProvider.jsx", "components/CartPage.jsx", "components/NavBar.jsx", "components/ProductCard.jsx", "components/ProductList.jsx"  ],
   "exclude": ["node_modules"]
 }

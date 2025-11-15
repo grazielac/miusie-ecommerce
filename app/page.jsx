@@ -1,17 +1,13 @@
-
-import AddToCart from "@/components/AddToCart";
-import NavBar from "@/components/NavBar";
 import ProductList from "@/components/ProductList";
-
 
 export default function Home() {
   return (
-   <>
-      <NavBar />
-      <ProductList />
-      {/* <AddToCart /> */}
-
-   
-   </>
+    <>
+      <div className="w-full h-screen bg-amber-100">
+        <div className="w-full gap-6">
+          <ProductList />
+        </div>
+      </div>
+    </>
   );
 }
