@@ -7,7 +7,7 @@ function NavBar() {
         <div className="w-full flex justify-around">
           {/* <Link href="/">Home</Link> */}
           {/* <Link href="/about">About</Link> */}
-          <Link href="/shop">Shop</Link>
+          {/* <Link href="/shop">Shop</Link> */}
           <Link href="/cart">Cart</Link>
         </div>
 
