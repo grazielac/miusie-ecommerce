@@ -1,4 +1,3 @@
-import lovenote from "../public/lovenote.png"
 
 export const products = [
     {
