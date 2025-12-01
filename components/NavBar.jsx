@@ -12,21 +12,35 @@ function NavBar() {
         <div className="w-full flex justify-between items-center">
           {/* LEFT LINKS */}
           <div className="flex gap-8 ml-12">
-            <Link href="/" className="hover:underline">Home</Link>
-            <Link href="/about" className="hover:underline">About</Link>
-            <Link href="/shop" className="hover:underline">Shop</Link>
-            <Link href="/cart" className="hover:underline">Cart</Link>
+            <Link href="/" className="hover:underline">
+              Home
+            </Link>
+            {/* <Link href="/about" className="hover:underline">
+              About
+            </Link> */}
+            <Link href="/shop" className="hover:underline">
+              Shop
+            </Link>
           </div>
           {/* LOGO */}
           <div className="mr-24">
-            <Image href="#" src="/logo.png" alt="logo" width={120} height={80} className="cursor-pointer"></Image>
+            <Image
+              href="#"
+              src="/logo.png"
+              alt="logo"
+              width={120}
+              height={80}
+              className="cursor-pointer"
+            ></Image>
           </div>
           {/* RIGHT LINKS*/}
           <div className="flex gap-8 mr-12">
-            <CiSearch size={22} className="cursor-pointer"/>
-            <CiHeart size={22} className="cursor-pointer"/>
+            <CiSearch size={22} className="cursor-pointer" />
+            <CiHeart size={22} className="cursor-pointer" />
             {/* <RxPerson size={22} /> */}
-            <CiShoppingCart size={22} className="cursor-pointer" />
+            <Link href="/cart">
+              <CiShoppingCart size={22} className="cursor-pointer" />
+            </Link>
           </div>
         </div>
       </div>
