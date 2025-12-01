@@ -1,16 +1,34 @@
 import Link from "next/link";
+import Image from "next/image";
+import { CiSearch } from "react-icons/ci";
+import { CiHeart } from "react-icons/ci";
+import { CiShoppingCart } from "react-icons/ci";
+import { RxPerson } from "react-icons/rx";
 
 function NavBar() {
   return (
     <>
-      <div className="text-sm flex gap-4 justify-around border-t-gray-400 border-b-gray-400 border-t border-b pt-8 pb-7">
-        <div className="w-full flex justify-around">
-          <Link href="/">Home</Link>
-          {/* <Link href="/about">About</Link> */}
-          {/* <Link href="/shop">Shop</Link> */}
-          <Link href="/cart">Cart</Link>
+      <div className="fixed top-0 left-0 w-full z-50 bg-white shadow text-sm flex gap-4 justify-around pt-4 pb-4">
+        <div className="w-full flex justify-between items-center">
+          {/* LEFT LINKS */}
+          <div className="flex gap-8 ml-12">
+            <Link href="/" className="hover:underline">Home</Link>
+            <Link href="/about" className="hover:underline">About</Link>
+            <Link href="/shop" className="hover:underline">Shop</Link>
+            <Link href="/cart" className="hover:underline">Cart</Link>
+          </div>
+          {/* LOGO */}
+          <div className="mr-24">
+            <Image href="#" src="/logo.png" alt="logo" width={120} height={80} className="cursor-pointer"></Image>
+          </div>
+          {/* RIGHT LINKS*/}
+          <div className="flex gap-8 mr-12">
+            <CiSearch size={22} className="cursor-pointer"/>
+            <CiHeart size={22} className="cursor-pointer"/>
+            {/* <RxPerson size={22} /> */}
+            <CiShoppingCart size={22} className="cursor-pointer" />
+          </div>
         </div>
-
       </div>
     </>
   );
