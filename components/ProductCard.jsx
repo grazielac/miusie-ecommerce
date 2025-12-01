@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import getProducts from '@/lib/products/getProducts';
 
 // 'product' isn't defined. it's passed in from the parent component (ProductList)
 // { product } is a parameter to the component

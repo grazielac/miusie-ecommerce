@@ -54,16 +54,7 @@ export async function POST(req) {
 
     // convert items to Stripe format
     const line_items = items.map((item) => ({
-      price_data: {
-        currency: "eur",
-        product_data: {
-          name: item.title,
-          images: item.image
-            ? [`${req.headers.get("origin")}${item.image}`]
-            : [],
-        },
-        unit_amount: item.price,
-      },
+      price: item.stripe_price_id, 
       quantity: item.quantity,
     }));
 

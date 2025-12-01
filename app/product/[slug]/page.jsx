@@ -3,9 +3,10 @@
 import Image from "next/image";
 import { products } from "@/data/products";
 import { useParams } from "next/navigation";
-import NavBar from "@/components/NavBar";
-import CartProvider, { useCart } from "@/context/CartProvider";
 import AddToCartButton from "@/components/AddToCartButton";
+
+
+// DYNAMIC PAGE FOR EACH PRODUCT 
 
 function ProductPage() {
   const params = useParams();

@@ -25,6 +25,7 @@ function CartDisplay() {
                 <li key={item.id} className="mb-2">
                   <div className="bg-gray-200 flex gap-8 pl-8">
                     <div>
+                      {item.image && (
                       <Image
                         src={item.image}
                         alt={item.title}
@@ -32,6 +33,7 @@ function CartDisplay() {
                         height={200}
                         className="rounded-md"
                       />
+                      )}
                     </div>
                     <div>
                       <div className="bg-amber-200 mt-8">
