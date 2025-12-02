@@ -24,7 +24,7 @@ function Shop() {
 
   return (
     <>
-      <div className="grid grid-cols-3 mt-10 mb-12 gap-12 px-10">
+      <div className="grid xl:grid-cols-3 md:grid-cols-2 mt-10 mb-12 gap-12 px-10">
         {/* map through products */}
 
         {products.map((product) => (
