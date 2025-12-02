@@ -3,6 +3,7 @@ import Image from "next/image";
 import AddToCartButton from "@/components/AddToCartButton";
 import getProducts from "@/lib/products/getProducts";
 
+
 // DYNAMIC PAGE FOR EACH PRODUCT
 
 async function ProductPage({ params }) {
@@ -24,43 +25,36 @@ async function ProductPage({ params }) {
 
   return (
     <>
-      <div className="w-full bg-[#FBF7F6] p-10">
+      <div className="w-full p-10">
         <div className="w-full">
           <div className="sm:flex pt-8">
-            <div className="pt-6 sm:pl-10 ">
+            <div className="w-full mr-14">
               <Image
                 src={product.image_url}
                 alt={product.title}
                 width={500}
                 height={200}
-                className="rounded-3xl sm:w-250"
+                className="rounded-2xl sm:w-250"
               />
             </div>
 
-            <div className="w-full sm:pl-14">
-              <div className="pt-6 sm:pt-14">
-                <h1 className="text-2xl sm:text-3xl pb-2">{product.title}</h1>
-                <h2 className="text-xl sm:text-2xl font-semibold">
+            <div className="w-full">
+              <div className="pt-8">
+                <h1 className="text-5xl tracking-tight pb-4">{product.title}</h1>
+                <h2 className="text-xl sm:text-2xl">
                   €{(product.price / 100).toFixed(2)}
                 </h2>
               </div>
-              <div>
-                <p className="py-10 text-sm">{product.description}</p>
+
+              {/* DESC */}
+              <div className="pt-12 mb-12">
+                <h3>Description</h3>
+                <hr />
+                <p className="pt-4 text-sm ">{product.description}</p>
               </div>
 
-              {/* buttons */}
+              {/* BUTTONS */}
               <AddToCartButton product={product} />
-              {/* <div className=" flex justify-center-safe gap-8 sm:justify-evenly pb-8 sm:mt-10 sm:w-3/5">
-                  <button className="border-red-300 border py-2 px-14 rounded-full cursor-pointer">
-                    + 1
-                  </button>
-                  <button
-                    onClick={() => addToCart(product)}
-                    className="bg-[#820C18] text-white py-2 px-14 rounded-full cursor-pointer"
-                  >
-                    Add to Cart
-                  </button>
-                </div> */}
             </div>
           </div>
         </div>

@@ -4,9 +4,7 @@ import { useEffect, useState } from "react";
 import getProducts from "@/lib/products/getProducts";
 import Image from "next/image";
 import { useCart } from "@/context/CartProvider";
-import { supabaseClient } from "@/lib/supabaseClient";
 import Link from "next/link";
-
 // rendering statUs data (products.map) and ProductCard
 
 function Shop() {
@@ -32,11 +30,11 @@ function Shop() {
         {products.map((product) => (
           <Link
             key={product.id}
-            href={`/product/${product.id}`}
+            href={`/products/${product.id}`}
             className="flex flex-col justify-between"
           >
             <div key={product.id} className="flex flex-col justify-between">
-              <div className="">
+              <div>
                 <Image
                   src={product.image_url}
                   alt={product.title}
@@ -45,9 +43,9 @@ function Shop() {
                   height={300}
                 />
                 <div className="flex flex-col justify-between items-center">
-                  <h2 className="font-bold pt-10">{product.title}</h2>
+                  <h2 className="text-xl tracking-tight pt-10">{product.title}</h2>
                   {/* <p>{product.description}</p> */}
-                  <p>€{(product.price / 100).toFixed(2)}</p>
+                  <p className="text-md">€{(product.price / 100).toFixed(2)}</p>
                   {product.stock === 0 && (
                     <p className="text-red-400 italic">Sold Out</p>
                   )}
