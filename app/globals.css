@@ -3,14 +3,24 @@
 
 body {
   background-color: #FCFBFA;
+  color: #4C3A2C
 }
 
 @font-face {
   font-family: "Parfumerie Script";
-  src: url("/fonts/ParfumerieScript-Regular.ttf") format("truetype");
-  font-weight: normal;
+  src: url("/fonts/Parfumerie.otf") format("truetype");
+  font-weight: 400;
   font-style: normal;
 }
+
+p {
+  font-family: var(--font-poppins), sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-forum), serif;
+}
+
 
 
 
