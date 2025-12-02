@@ -3,21 +3,28 @@ import Image from "next/image";
 import { CiSearch } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
 import { CiShoppingCart } from "react-icons/ci";
+import { Forum } from "next/font/google";
+
+const forum = Forum({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-forum",
+});
 
 function NavBar() {
   return (
     <>
-      <div className=" bg-white shadow text-sm flex gap-4 justify-around pt-4 pb-4">
+      <div className="text-sm flex gap-4 justify-around pt-4 pb-4">
         <div className="w-full flex justify-between items-center">
           {/* LEFT LINKS */}
           <div className="flex gap-8 ml-12">
-            <Link href="/" className="hover:underline">
+            <Link href="/" className={`${forum.className} text-lg`}>
               Home
             </Link>
             {/* <Link href="/about" className="hover:underline">
               About
             </Link> */}
-            <Link href="/shop" className="hover:underline">
+            <Link href="/shop" className={`${forum.className} text-lg`}>
               Shop
             </Link>
           </div>
