@@ -3,12 +3,11 @@ import Image from "next/image";
 import { CiSearch } from "react-icons/ci";
 import { CiHeart } from "react-icons/ci";
 import { CiShoppingCart } from "react-icons/ci";
-import { RxPerson } from "react-icons/rx";
 
 function NavBar() {
   return (
     <>
-      <div className="fixed top-0 left-0 w-full z-50 bg-white shadow text-sm flex gap-4 justify-around pt-4 pb-4">
+      <div className=" bg-white shadow text-sm flex gap-4 justify-around pt-4 pb-4">
         <div className="w-full flex justify-between items-center">
           {/* LEFT LINKS */}
           <div className="flex gap-8 ml-12">
@@ -23,7 +22,7 @@ function NavBar() {
             </Link>
           </div>
           {/* LOGO */}
-          <div className="mr-24">
+          <div>
             <Image
               href="#"
               src="/logo.png"
