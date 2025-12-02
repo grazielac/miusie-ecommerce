@@ -32,13 +32,15 @@ export default function CheckoutButton({ items }) {
   };
 
   return (
-    <div>
+    <div className="w-full mt-10">
+      <div className="flex justify-end">
       <button
-        className="border py-2 px-4 rounded-full bg-red-400 cursor-pointer hover:bg-amber-200"
+        className="border py-2 px-44 rounded-full cursor-pointer hover:bg-[#DF3D54] hover:text-white"
         onClick={handleCheckout}
       >
         Checkout
       </button>
+      </div>
     </div>
   );
 }

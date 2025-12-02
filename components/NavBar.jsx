@@ -1,8 +1,8 @@
-"use client"
+"use client";
 import Link from "next/link";
 import Image from "next/image";
-import { CiSearch } from "react-icons/ci";
-import { CiHeart } from "react-icons/ci";
+// import { CiSearch } from "react-icons/ci";
+// import { CiHeart } from "react-icons/ci";
 import { CiShoppingCart } from "react-icons/ci";
 import { Forum } from "next/font/google";
 import { useCart } from "@/context/CartProvider";
@@ -47,13 +47,15 @@ function NavBar() {
           </div>
           {/* RIGHT LINKS*/}
           <div className="flex gap-8 mr-12">
-            <CiSearch size={22} className="cursor-pointer" />
-            <CiHeart size={22} className="cursor-pointer" />
+            {/* <CiSearch size={22} className="cursor-pointer" /> */}
+            {/* <CiHeart size={22} className="cursor-pointer" /> */}
             {/* <RxPerson size={22} /> */}
             <Link href="/cart">
-              <CiShoppingCart size={22} className="cursor-pointer" />
+              <CiShoppingCart size={26} className="cursor-pointer" />
               {totalItems > 0 && (
-                <span className="absolute top-4 right-10 bg-red-800 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">{totalItems}</span>
+                <span className="absolute top-4 right-10 bg-red-800 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                  {totalItems}
+                </span>
               )}
             </Link>
           </div>

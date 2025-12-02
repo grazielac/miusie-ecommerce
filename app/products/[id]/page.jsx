@@ -40,7 +40,7 @@ async function ProductPage({ params }) {
 
             <div className="w-full">
               <div className="pt-8">
-                <h1 className="text-5xl tracking-tight pb-4">{product.title}</h1>
+                <h1 className="text-4xl lg:text-5xl tracking-tight pb-4">{product.title}</h1>
                 <h2 className="text-xl sm:text-2xl">
                   €{(product.price / 100).toFixed(2)}
                 </h2>
