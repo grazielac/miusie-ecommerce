@@ -6,6 +6,7 @@ import { HiOutlineXMark } from "react-icons/hi2";
 
 function CartDisplay() {
   const { cart, removeFromCart } = useCart();
+  console.log(cart);
 
   //calculate subtotal
   const subtotal = cart.reduce(

@@ -10,7 +10,6 @@ const supabase = createClient(
 );
 
 export async function POST(req) {
- 
   console.log(">>> API ROUTE HIT");
   try {
     const { items } = await req.json();
@@ -43,7 +42,7 @@ export async function POST(req) {
       title: item.title,
       quantity: item.quantity,
       unit_amount: item.price,
-      image: item.image,
+      image: item.image_url,
     }));
 
     const { error: itemsErr } = await supabase
@@ -53,10 +52,13 @@ export async function POST(req) {
     if (itemsErr) throw itemsErr;
 
     // convert items to Stripe format
+    console.log("Received items:", items);
+
     const line_items = items.map((item) => ({
-      price: item.stripe_price_id, 
+      price: String(item.stripe_price_id),
       quantity: item.quantity,
     }));
+    console.log("Stripe line_items:", line_items);
 
     // create Stripe checkout session
     const session = await stripe.checkout.sessions.create({
@@ -70,8 +72,6 @@ export async function POST(req) {
 
     console.log("Created session:", session.id);
 
-    
-
     // update order with stripe session id
     await supabase
       .from("orders")
@@ -80,8 +80,10 @@ export async function POST(req) {
 
     return NextResponse.json({ url: session.url });
   } catch (err) {
-    console.error(">>> API ERROR:", err.message);
-    console.error("Stripe error:", err);
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    console.error(">>> API ERROR:", err);
+    return NextResponse.json(
+      { error: err?.message || "Uknown error" },
+      { status: 500 }
+    );
   }
 }

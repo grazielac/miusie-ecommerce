@@ -10,21 +10,23 @@ export function useCart() {
 }
 
 function CartProvider({ children }) {
-  // store the cart
+  // store the cart // cart starts empty on server + client
   const [cart, setCart] = useState(() => {
-    if (typeof window === "undefined") return [];
+    if (typeof window === 'undefined') return [];
     try {
-      const storedCart = localStorage.getItem("cart");
-      return storedCart ? JSON.parse(storedCart) : [];
+      const stored = localStorage.getItem("cart");
+      return stored ? JSON.parse(stored) : [];
     } catch {
       localStorage.removeItem("cart");
       return [];
     }
   });
+  
 
-  // save cart to localStorage whenever it changes
+// save cart when changed
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
+      localStorage.setItem("cart", JSON.stringify(cart));
+
   }, [cart]);
 
   // function that takes an item and adds it to the cart
