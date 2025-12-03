@@ -5,7 +5,7 @@ import Image from "next/image";
 // import { CiHeart } from "react-icons/ci";
 import { CiShoppingCart } from "react-icons/ci";
 import { Forum } from "next/font/google";
-import { useCart } from "@/context/CartProvider";
+import CartBadge from "@/components/CartBadge"
 
 const forum = Forum({
   subsets: ["latin"],
@@ -14,9 +14,7 @@ const forum = Forum({
 });
 
 function NavBar() {
-  const { cart } = useCart();
 
-  const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <>
@@ -24,14 +22,14 @@ function NavBar() {
         <div className="w-full flex justify-between items-center">
           {/* LEFT LINKS */}
           <div className="flex gap-8 ml-12">
-            <Link href="/" className={`${forum.className} text-lg`}>
-              Home
+            <Link href="/">
+              <p className={`${forum.className} text-lg`}>Home</p>
             </Link>
             {/* <Link href="/about" className="hover:underline">
               About
             </Link> */}
-            <Link href="/shop" className={`${forum.className} text-lg`}>
-              Shop
+            <Link href="/shop">
+              <p className={`${forum.className} text-lg`}>Shop</p>
             </Link>
           </div>
           {/* LOGO */}
@@ -50,13 +48,16 @@ function NavBar() {
             {/* <CiSearch size={22} className="cursor-pointer" /> */}
             {/* <CiHeart size={22} className="cursor-pointer" /> */}
             {/* <RxPerson size={22} /> */}
+            <Link href="/shop">
+              <p className={`${forum.className} text-lg`}>Join the list</p>
+            </Link>
+
             <Link href="/cart">
-              <CiShoppingCart size={26} className="cursor-pointer" />
-              {totalItems > 0 && (
-                <span className="absolute top-4 right-10 bg-red-800 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
-                  {totalItems}
-                </span>
-              )}
+              <div className="relative">
+                <CiShoppingCart size={26} className="cursor-pointer" />
+                <CartBadge />
+                
+              </div>
             </Link>
           </div>
         </div>
