@@ -3,9 +3,13 @@ import { useCart } from "../context/CartProvider";
 import Image from "next/image";
 import CheckoutButton from "./CheckoutButton";
 import { HiOutlineXMark } from "react-icons/hi2";
+import { HiOutlineMinus } from "react-icons/hi2";
+import { HiOutlinePlus } from "react-icons/hi";
 
 function CartDisplay() {
   const { cart, removeFromCart } = useCart();
+  const { subtractItem, plusItem } = useCart();
+
   console.log(cart);
 
   //calculate subtotal
@@ -13,6 +17,8 @@ function CartDisplay() {
     (acc, item) => acc + Number(item.price) * item.quantity,
     0
   );
+
+  const subtotalEuro = subtotal / 100;
 
   return (
     <div>
@@ -39,21 +45,43 @@ function CartDisplay() {
                     )}
                   </div>
                   <div className="flex justify-between items-center w-full p-2 gap-4">
-                    <div className="flex-1 p-2">
+                    <div className=" p-2 w-60">
                       <div className="font-bold">{item.title}</div>
                     </div>
                     <div className="flex items-center justify-center w-16 p-2">
-                      <div>{item.quantity}</div>
+                      {/* MINUS */}
+                      <button
+                        onClick={() => subtractItem(item)}
+                        className="p-2 hover:bg-red-100 rounded-full"
+                      >
+                        <HiOutlineMinus size={20} className="cursor-pointer" />
+                      </button>
+
+                      <div className="p-4">{item.quantity}</div>
+
+                      {/* PLUS */}
+                      <button
+                        onClick={() => plusItem(item)}
+                        className="p-2 hover:bg-red-100 rounded-full"
+                      >
+                        <HiOutlinePlus size={20} className="cursor-pointer" />
+                      </button>
                     </div>
 
                     <div className="flex items-center justify-center w-20 p-2">
-                      <span>£{item.price * item.quantity}</span>
+                      <span>€{(item.price / 100) * item.quantity}</span>
                     </div>
 
                     <div className="p-2">
                       <div>
-                        <button onClick={() => removeFromCart(item.id)} className="p-2 hover:bg-red-100 rounded-full">
-                        <HiOutlineXMark size={24} className="cursor-pointer" />
+                        <button
+                          onClick={() => removeFromCart(item.id)}
+                          className="p-2 hover:bg-red-100 rounded-full"
+                        >
+                          <HiOutlineXMark
+                            size={24}
+                            className="cursor-pointer"
+                          />
                         </button>
                       </div>
                     </div>
@@ -69,7 +97,7 @@ function CartDisplay() {
         <div className="flex justify-end ">
           <div className="mt-10 flex gap-75">
             <div className="text-md">Subtotal</div>
-            <div>€{subtotal}</div>
+            <div>€{subtotalEuro}</div>
           </div>
         </div>
 
