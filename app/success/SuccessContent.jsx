@@ -3,11 +3,14 @@
 import Link from "next/link"
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useCart } from "@/context/CartProvider";
+
 
 function SuccessContent() {
       const params = useSearchParams();
       const sessionId = params.get("session_id");
       const [order, setOrder] = useState(null);
+      const { cart, setCart } = useCart();
     
       useEffect(() => {
         if (sessionId) {
@@ -16,6 +19,12 @@ function SuccessContent() {
             .then((data) => setOrder(data));
         }
       }, [sessionId]);
+
+      // clear cart after successful payment
+      useEffect(() => {
+        setCart([]);
+        localStorage.removeItem("cart");
+      }, [setCart]);
 
   return (
     <div>
