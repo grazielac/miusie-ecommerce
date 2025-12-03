@@ -11,16 +11,17 @@ export function useCart() {
 
 function CartProvider({ children }) {
   // store the cart // cart starts empty on server + client
-  const [cart, setCart] = useState(() => {
-    if (typeof window === "undefined") return [];
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
     try {
       const stored = localStorage.getItem("cart");
-      return stored ? JSON.parse(stored) : [];
+      if (stored) setCart(JSON.parse(stored));
     } catch {
       localStorage.removeItem("cart");
-      return [];
+     
     }
-  });
+  }, []);
 
   // save cart when changed
   useEffect(() => {
@@ -85,7 +86,7 @@ function CartProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, subtractItem, plusItem }}
+      value={{ cart, addToCart, removeFromCart, subtractItem, plusItem, setCart }}
     >
       {children}
     </CartContext.Provider>
