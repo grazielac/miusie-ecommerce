@@ -2,7 +2,7 @@
 import { useCart } from "@/context/CartProvider";
 import { HiOutlineMinus } from "react-icons/hi2";
 import { HiOutlinePlus } from "react-icons/hi";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function AddToCartButton({ product, quantity }) {
   const { addToCart } = useCart();
