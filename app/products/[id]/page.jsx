@@ -1,7 +1,8 @@
+
 // dynamic page for each product
 import Image from "next/image";
-import AddToCartButton from "@/components/AddToCartButton";
 import getProducts from "@/lib/products/getProducts";
+import ProductActions from "@/components/ProductActions"
 
 
 // DYNAMIC PAGE FOR EACH PRODUCT
@@ -55,7 +56,8 @@ async function ProductPage({ params }) {
               </div>
 
               {/* BUTTONS */}
-              <AddToCartButton product={product} />
+              {/* client-only */}
+              <ProductActions product={product} />
             </div>
           </div>
         </div>
