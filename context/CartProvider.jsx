@@ -12,7 +12,7 @@ export function useCart() {
 function CartProvider({ children }) {
   // store the cart // cart starts empty on server + client
   const [cart, setCart] = useState(() => {
-    if (typeof window === 'undefined') return [];
+    if (typeof window === "undefined") return [];
     try {
       const stored = localStorage.getItem("cart");
       return stored ? JSON.parse(stored) : [];
@@ -21,12 +21,10 @@ function CartProvider({ children }) {
       return [];
     }
   });
-  
 
-// save cart when changed
+  // save cart when changed
   useEffect(() => {
-      localStorage.setItem("cart", JSON.stringify(cart));
-
+    localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
   // function that takes an item and adds it to the cart
@@ -45,13 +43,50 @@ function CartProvider({ children }) {
       }
     });
   }
-// delete an item by ID
+
+  // subtract an item quantity
+  function subtractItem(product) {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((item) => item.id === product.id);
+
+      if (existingItem) {
+        return prevCart
+          .map((item) =>
+            item.id === product.id
+              ? { ...item, quantity: item.quantity - 1 }
+              : item
+          )
+          .filter((item) => item.quantity > 0);
+      }
+      return prevCart;
+    });
+  }
+
+  // add an item quantity
+  function plusItem(product) {
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((item) => item.id === product.id);
+
+      if (existingItem) {
+        return prevCart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+      return prevCart;
+    });
+  }
+
+  // delete an item by ID
   function removeFromCart(productId) {
     setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
   }
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, subtractItem, plusItem }}
+    >
       {children}
     </CartContext.Provider>
   );
