@@ -8,7 +8,7 @@ import ProductActions from "@/components/ProductActions"
 // DYNAMIC PAGE FOR EACH PRODUCT
 
 async function ProductPage({ params }) {
-  const { id } = params;
+  const { id } = await params;
   // const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
 
   // get all products
