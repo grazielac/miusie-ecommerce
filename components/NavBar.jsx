@@ -38,7 +38,7 @@ function NavBar() {
               href="#"
               src="/logo.png"
               alt="logo"
-              width={120}
+              width={142}
               height={80}
               className="cursor-pointer"
             ></Image>
