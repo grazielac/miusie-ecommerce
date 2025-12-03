@@ -21,6 +21,7 @@ async function ProductPage({ params }) {
   console.log("params:", params);
   console.log(products);
 
+
   if (!product) return <p className="p-10">Product not found</p>;
 
   return (

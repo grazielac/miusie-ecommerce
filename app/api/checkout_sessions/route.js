@@ -3,19 +3,17 @@ import Stripe from "stripe";
 import { createClient } from "@supabase/supabase-js";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
 const supabase = createClient(
   process.env.SUPABASE_PROJECT_URL,
   process.env.SUPABASE_SERVICE_ROLE
 );
 
 export async function POST(req) {
-  console.log(">>> API ROUTE HIT");
+  console.log("API hit");
+  
   try {
     const { items } = await req.json();
     const origin = req.headers.get("origin");
-
-    console.log("Received items:", items);
 
     const amount_total = items.reduce(
       (sum, item) => sum + item.price * item.quantity,
@@ -45,6 +43,8 @@ export async function POST(req) {
       image: item.image_url,
     }));
 
+    console.log(order, orderItems);
+
     const { error: itemsErr } = await supabase
       .from("order_items")
       .insert(orderItems);
@@ -55,9 +55,14 @@ export async function POST(req) {
     console.log("Received items:", items);
 
     const line_items = items.map((item) => ({
-      price: String(item.stripe_price_id),
+      price_data: {
+        currency: "eur",
+        product_data: { name: item.title },
+        unit_amount: item.price, // Stripe expects cents
+      },
       quantity: item.quantity,
     }));
+
     console.log("Stripe line_items:", line_items);
 
     // create Stripe checkout session
