@@ -23,11 +23,11 @@ function NavBar() {
   return (
     <>
       {/* MOBILE NAV */}
-      <div className="bg-transparent absolute z-50 py-4 w-full flex flex-row-reverse lg:hidden justify-between items-center px-8">
+      <div className="bg-transparent z-10 py-4 w-full flex flex-row-reverse lg:hidden justify-between items-center px-8">
         {/* CART */}
         <Link href="/cart">
           <div className="relative">
-            <CiShoppingCart size={26} className="cursor-pointer" color="white" />
+            <CiShoppingCart size={26} className="cursor-pointer" />
             <CartBadge />
           </div>
         </Link>
@@ -45,7 +45,6 @@ function NavBar() {
           size={26}
           className="cursor-pointer"
           onClick={() => setIsOpen(!isOpen)}
-          color="white"
         />
       </div>
 
@@ -74,15 +73,15 @@ function NavBar() {
 
       {/* DESKTOP NAV */}
       <div>
-        <div className="bg-transparent absolute z-50 py-4 w-full hidden lg:flex lg:justify-between lg:items-center">
+        <div className="bg-transparent z-50 py-4 w-full hidden lg:flex lg:justify-between lg:items-center">
           {/* LEFT LINKS */}
           <div className="flex gap-4 ml-12">
             <Link href="/">
-              <p className={`${forum.className} text-lg text-white`}>Home</p>
+              <p className={`${forum.className} text-lg `}>Home</p>
             </Link>
 
             <Link href="/shop">
-              <p className={`${forum.className} text-lg text-white`}>Shop</p>
+              <p className={`${forum.className} text-lg `}>Shop</p>
             </Link>
           </div>
 
@@ -104,12 +103,12 @@ function NavBar() {
             {/* <CiHeart size={22} className="cursor-pointer" /> */}
             {/* <RxPerson size={22} /> */}
             <Link href="/newsletter">
-              <p className={`${forum.className} text-lg text-white`}>Join the list</p>
+              <p className={`${forum.className} text-lg `}>Join the list</p>
             </Link>
 
             <Link href="/cart">
               <div className="relative">
-                <CiShoppingCart size={26} className="cursor-pointer" color="white" />
+                <CiShoppingCart size={26} className="cursor-pointer" />
                 <CartBadge />
               </div>
             </Link>

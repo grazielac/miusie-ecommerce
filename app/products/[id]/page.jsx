@@ -1,12 +1,9 @@
 
-// dynamic page for each product
 import Image from "next/image";
 import getProducts from "@/lib/products/getProducts";
 import ProductActions from "@/components/ProductActions"
 
-
 // DYNAMIC PAGE FOR EACH PRODUCT
-
 async function ProductPage({ params }) {
   const { id } = await params;
   // const slug = Array.isArray(params.slug) ? params.slug[0] : params.slug;
@@ -16,10 +13,7 @@ async function ProductPage({ params }) {
 
   const product = products.find((p) => String(p.id) === String(id));
 
-  // const { addToCart } = useCart();
-
   console.log("postSlug:", id);
-  console.log("params:", params);
   console.log(products);
 
 
@@ -27,7 +21,7 @@ async function ProductPage({ params }) {
 
   return (
     <>
-      <div className="w-full p-10">
+      <div className="w-full p-6 lg:p-10">
         <div className="w-full">
           <div className="sm:flex pt-8">
             <div className="w-full mr-14">
@@ -36,14 +30,14 @@ async function ProductPage({ params }) {
                 alt={product.title}
                 width={500}
                 height={200}
-                className="rounded-2xl sm:w-250"
+                className="rounded-xl sm:w-250"
               />
             </div>
 
             <div className="w-full">
-              <div className="pt-8">
-                <h1 className="text-4xl lg:text-5xl tracking-tight pb-4">{product.title}</h1>
-                <h2 className="text-xl sm:text-2xl">
+              <div className="pt-4 lg:pt-8">
+                <h1 className="text-3xl lg:text-4xl tracking-tight pb-4">{product.title}</h1>
+                <h2 className="text-lg sm:text-2xl">
                   €{(product.price / 100).toFixed(2)}
                 </h2>
               </div>

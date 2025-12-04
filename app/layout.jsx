@@ -3,6 +3,7 @@ import CartProvider from "@/context/CartProvider";
 import NavBar from "@/components/NavBar";
 import { Poppins, Forum } from "next/font/google";
 import localFont from "next/font/local";
+import Footer from "@/components/Footer";
 
 const parfumerie = localFont({
   src: "../public/fonts/Parfumerie.otf",
@@ -39,6 +40,7 @@ export default function RootLayout({ children }) {
           <NavBar />
 
           <main>{children}</main>
+          <Footer />
         </CartProvider>
       </body>
     </html>
