@@ -23,7 +23,7 @@ function NavBar() {
   return (
     <>
       {/* MOBILE NAV */}
-      <div className="bg-red-100 py-4 w-full flex flex-row-reverse lg:hidden justify-between items-center px-8">
+      <div className="bg-transparent absolute z-50 py-4 w-full flex flex-row-reverse lg:hidden justify-between items-center px-8">
         {/* CART */}
         <Link href="/cart">
           <div className="relative">
