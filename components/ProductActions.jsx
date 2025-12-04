@@ -1,7 +1,7 @@
 "use client";
 
-import AddtoCartButton from '../components/AddToCartButton'
+import AddToCartButton from '../components/AddToCartButton'
 
 export default function ProductActions({ product }) {
-    return <AddtoCartButton product={product} />
+    return <AddToCartButton product={product} />
 }
