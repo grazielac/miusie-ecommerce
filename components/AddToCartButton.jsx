@@ -5,11 +5,12 @@ import { HiOutlinePlus } from "react-icons/hi";
 import { useState } from "react";
 
 function AddToCartButton({ product, quantity }) {
-  const { addToCart } = useCart();
+  const { addToCart, showPopup } = useCart();
   const [onquantity, setQuantity] = useState(1);
 
+
   function minusItem() {
-    setQuantity((product) => product - 1);
+    setQuantity((product) => Math.max(1, product - 1));
   }
 
   function addItem() {
@@ -48,6 +49,12 @@ function AddToCartButton({ product, quantity }) {
           >
             Add to Cart
           </button>
+
+          {showPopup && ( 
+            <div className="absolute top-50px right-0 bg-black text-white px-3 py-2 rounded-lg shadow-lg animate-fade-in">
+              Added to cart
+            </div>
+          )}
         </div>
       </div>
     </div>
