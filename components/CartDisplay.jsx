@@ -5,6 +5,13 @@ import CheckoutButton from "./CheckoutButton";
 import { HiOutlineXMark } from "react-icons/hi2";
 import { HiOutlineMinus } from "react-icons/hi2";
 import { HiOutlinePlus } from "react-icons/hi";
+import { Forum } from "next/font/google";
+
+const forum = Forum({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-forum",
+});
 
 function CartDisplay() {
   const { cart, removeFromCart } = useCart();
@@ -22,7 +29,7 @@ function CartDisplay() {
 
   return (
     <div>
-      <div className="p-10">
+      <div className="p-6 lg:p-10">
         <h1 className="text-4xl mb-4 tracking-tight">Your Cart</h1>
 
         {cart.length === 0 ? (
@@ -31,9 +38,10 @@ function CartDisplay() {
           <ul>
             <hr />
             {cart.map((item) => (
-              <li key={item.id} className="mb-2">
-                <div className="flex gap-8 pl-8 pt-8">
-                  <div>
+              // EACH PRODUCT
+              <li key={item.id} className="mb-2 mt-2">
+                <div className="flex flex-col-2 lg:flex-row gap-2 lg:gap-4 pt-4 justify-center items-center">
+                  <div className="shrink-0 w-20 sm:w-32 lg:w-48 pl-2 ">
                     {item.image_url && (
                       <Image
                         src={item.image_url}
@@ -44,36 +52,40 @@ function CartDisplay() {
                       />
                     )}
                   </div>
-                  <div className="flex justify-between items-center w-full p-2 gap-4">
-                    <div className=" p-2 w-60">
-                      <div className="font-bold">{item.title}</div>
+
+                  {/* TITLE + ADD/MINUS */}
+                  <div className="sm:flex-row flex justify-between items-center w-full p-2 gap-4">
+                    <div className="p-2 w-40 lg:w-1/2 flex justify-between items-center flex-col gap-10 lg:flex-row">
+                      <div className={`${forum.className} text-lg`}>
+                        {item.title}
+                      </div>
+                      <div className="flex items-center lg:p-2">
+                        {/* MINUS */}
+                        <button
+                          onClick={() => subtractItem(item)}
+                          className="p-2 hover:bg-red-100 rounded-full"
+                        >
+                          <HiOutlineMinus
+                            size={20}
+                            className="cursor-pointer"
+                          />
+                        </button>
+
+                        <div className={`${forum.className} text-lg p-2`}>{item.quantity}</div>
+
+                        {/* PLUS */}
+                        <button
+                          onClick={() => plusItem(item)}
+                          className="p-2 hover:bg-red-100 rounded-full"
+                        >
+                          <HiOutlinePlus size={20} className="cursor-pointer" />
+                        </button>
+                      </div>
                     </div>
-                    <div className="flex items-center justify-center w-16 p-2">
-                      {/* MINUS */}
-                      <button
-                        onClick={() => subtractItem(item)}
-                        className="p-2 hover:bg-red-100 rounded-full"
-                      >
-                        <HiOutlineMinus size={20} className="cursor-pointer" />
-                      </button>
 
-                      <div className="p-4">{item.quantity}</div>
-
-                      {/* PLUS */}
-                      <button
-                        onClick={() => plusItem(item)}
-                        className="p-2 hover:bg-red-100 rounded-full"
-                      >
-                        <HiOutlinePlus size={20} className="cursor-pointer" />
-                      </button>
-                    </div>
-
-                    <div className="flex items-center justify-center w-20 p-2">
-                      <span>€{(item.price / 100) * item.quantity}</span>
-                    </div>
-
-                    <div className="p-2">
-                      <div>
+                    {/* PRICE + X */}
+                    <div className="w-1/2 flex flex-col gap-16 justify-between items-center lg:flex-row-reverse lg:justify-between lg:ml-10 lg:items-center">
+                      <div className="lg:self-auto">
                         <button
                           onClick={() => removeFromCart(item.id)}
                           className="p-2 hover:bg-red-100 rounded-full"
@@ -83,6 +95,10 @@ function CartDisplay() {
                             className="cursor-pointer"
                           />
                         </button>
+                      </div>
+
+                      <div className="flex items-center justify-center w-20 p-2">
+                        <span className={`${forum.className} text-xl`}>€{(item.price / 100) * item.quantity}</span>
                       </div>
                     </div>
                   </div>
@@ -94,19 +110,14 @@ function CartDisplay() {
 
         <hr className="mt-10" />
 
-        <div className="flex justify-end ">
-          <div className="mt-10 flex gap-75">
-            <div className="text-md">Subtotal</div>
-            <div>€{subtotalEuro}</div>
+        <div className="flex justify-between">
+          <div className="w-full mt-10 flex justify-between items-center lg:justify-end lg:gap-84">
+            <div className={`${forum.className} text-md`}>Subtotal</div>
+            <div className={`${forum.className} text-xl`}>€{subtotalEuro}</div>
           </div>
         </div>
 
-        <div className="flex items-center justify-center">
-          <CheckoutButton
-            items={cart}
-            className="rounded-full px-4 py-2"
-          ></CheckoutButton>
-        </div>
+        <CheckoutButton items={cart} />
       </div>
     </div>
   );
