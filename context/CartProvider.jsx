@@ -12,7 +12,7 @@ export function useCart() {
 function CartProvider({ children }) {
   // store the cart // cart starts empty on server + client
   const [cart, setCart] = useState([]);
-
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     try {
@@ -20,7 +20,6 @@ function CartProvider({ children }) {
       if (stored) setCart(JSON.parse(stored));
     } catch {
       localStorage.removeItem("cart");
-     
     }
   }, []);
 
@@ -28,7 +27,6 @@ function CartProvider({ children }) {
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
-
 
   // function that takes an item and adds it to the cart
   function addToCart(product, quantity) {
@@ -45,6 +43,9 @@ function CartProvider({ children }) {
         return [...prevCart, { ...product, quantity: quantity }];
       }
     });
+
+    setShowPopup(true);
+    setTimeout(() => setShowPopup(false), 2000);
   }
 
   // subtract an item quantity
@@ -88,7 +89,16 @@ function CartProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, subtractItem, plusItem, setCart }}
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        subtractItem,
+        plusItem,
+        setCart,
+        showPopup,
+        setShowPopup,
+      }}
     >
       {children}
     </CartContext.Provider>
