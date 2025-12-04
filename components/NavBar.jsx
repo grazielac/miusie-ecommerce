@@ -27,7 +27,7 @@ function NavBar() {
         {/* CART */}
         <Link href="/cart">
           <div className="relative">
-            <CiShoppingCart size={26} className="cursor-pointer" />
+            <CiShoppingCart size={26} className="cursor-pointer" color="white" />
             <CartBadge />
           </div>
         </Link>
@@ -45,6 +45,7 @@ function NavBar() {
           size={26}
           className="cursor-pointer"
           onClick={() => setIsOpen(!isOpen)}
+          color="white"
         />
       </div>
 
@@ -55,7 +56,7 @@ function NavBar() {
           <IoCloseOutline size={36} onClick={() => setIsOpen(false)} />
 
           {/* menu links */}
-          <div className="flex-1 flex justify-center items-center">
+          <div className="flex-1 flex justify-center items-center ">
             <div className="text-2xl flex flex-col gap-6 justify-center items-center">
               <Link href="/" onClick={() => setIsOpen(false)}>
                 <p className={`${forum.className} text-3xl`}>Home</p>
@@ -73,15 +74,15 @@ function NavBar() {
 
       {/* DESKTOP NAV */}
       <div>
-        <div className="py-4 w-full hidden lg:flex lg:justify-between lg:items-center">
+        <div className="bg-transparent absolute z-50 py-4 w-full hidden lg:flex lg:justify-between lg:items-center">
           {/* LEFT LINKS */}
           <div className="flex gap-4 ml-12">
             <Link href="/">
-              <p className={`${forum.className} text-lg`}>Home</p>
+              <p className={`${forum.className} text-lg text-white`}>Home</p>
             </Link>
 
             <Link href="/shop">
-              <p className={`${forum.className} text-lg`}>Shop</p>
+              <p className={`${forum.className} text-lg text-white`}>Shop</p>
             </Link>
           </div>
 
@@ -103,12 +104,12 @@ function NavBar() {
             {/* <CiHeart size={22} className="cursor-pointer" /> */}
             {/* <RxPerson size={22} /> */}
             <Link href="/newsletter">
-              <p className={`${forum.className} text-lg`}>Join the list</p>
+              <p className={`${forum.className} text-lg text-white`}>Join the list</p>
             </Link>
 
             <Link href="/cart">
               <div className="relative">
-                <CiShoppingCart size={26} className="cursor-pointer" />
+                <CiShoppingCart size={26} className="cursor-pointer" color="white" />
                 <CartBadge />
               </div>
             </Link>
