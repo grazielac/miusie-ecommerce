@@ -6,7 +6,7 @@ A lightweight e-commerce application built for my small business managing handma
 ![Screenshot](/public/demo.png)
 
 ## Live Demo
-[Live Demo](www.miusie.com)
+[Live Demo](https://www.miusie.com)
 
 ## About the Project
 
